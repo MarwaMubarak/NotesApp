@@ -53,6 +53,8 @@ class SignUpView extends StatelessWidget {
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
                             hintText: 'First Name',
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
 
                           ),
                         ),
@@ -77,6 +79,8 @@ class SignUpView extends StatelessWidget {
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
                             hintText: 'Last Name',
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
 
                           ),
                         ),
