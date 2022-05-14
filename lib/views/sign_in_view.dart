@@ -57,11 +57,14 @@ class SignInView extends StatelessWidget {
                             child: TextField(
                               controller: _emailController,
                               textAlign: TextAlign.center,
+
                               onChanged: (val) {
                                   userCubit.Validation(_emailController.toString());
                               },
                               decoration: const InputDecoration(
                                 hintText: 'Email',
+                                border: InputBorder.none,
+                                enabledBorder: InputBorder.none,
 
 
                               ),
@@ -90,6 +93,8 @@ class SignInView extends StatelessWidget {
                               autocorrect: false,
                               decoration: const InputDecoration(
                                 hintText: 'Password',
+                                border: InputBorder.none,
+                                enabledBorder: InputBorder.none,
 
                               ),
                             ),
