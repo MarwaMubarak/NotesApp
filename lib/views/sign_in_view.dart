@@ -56,17 +56,17 @@ class SignInView extends StatelessWidget {
                             width: 350,
                             child: TextField(
                               controller: _emailController,
-                              textAlign: TextAlign.center,
+
 
                               onChanged: (val) {
                                   userCubit.Validation(_emailController.toString());
                               },
                               decoration: const InputDecoration(
+                                prefixIcon: Icon(Icons.email_outlined),
+                                prefixIconColor: Colors.grey,
                                 hintText: 'Email',
                                 border: InputBorder.none,
                                 enabledBorder: InputBorder.none,
-
-
                               ),
                             ),
                           ),
@@ -87,11 +87,12 @@ class SignInView extends StatelessWidget {
                             width: 350,
                             child: TextField(
                               controller: _passController,
-                              textAlign: TextAlign.center,
                               obscureText: true,
                               enableSuggestions: false,
                               autocorrect: false,
                               decoration: const InputDecoration(
+                                prefixIcon: Icon(Icons.lock),
+                                prefixIconColor: Colors.grey,
                                 hintText: 'Password',
                                 border: InputBorder.none,
                                 enabledBorder: InputBorder.none,
@@ -113,27 +114,27 @@ class SignInView extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => NoteView()),
+                          MaterialPageRoute(builder: (context) => HomeView()),
                         );
                       },
                       child: const Text('Sign In',
                         style: TextStyle(fontSize: 20, color: Colors.black),)
                   ),
                   SizedBox(
-                    height: 60,
+                    height: 20,
                   ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xfffae2fc),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUpView()),
-                        );
-                      },
-                      child: const Text('Sign Up',
-                        style: TextStyle(fontSize: 15, color: Colors.black),)
+                  Text('Don\'t have an account?',style: TextStyle(color: Colors.white),),
+                  GestureDetector(
+                      child: Text('Sign Up',style: TextStyle(color: Color(0xfffae2fc),fontSize: 15),),
+                    onTap: ()
+                    {
+                      _emailController.clear();
+                      _passController.clear();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUpView()),
+                      );
+                    },
                   ),
                 ],
               ),

@@ -42,7 +42,7 @@ class _SplachScreenState extends State<SplachScreen> {
   }
 
   startTime() async {
-    var duration = new Duration(seconds: 3);
+    var duration = new Duration(seconds: 2);
     return new Timer(duration, route);
   }
 

@@ -18,7 +18,7 @@ class NoteCubit extends Cubit<NoteState> {
   void getNotes(){
     // Todo :: Create get data
     emit(NoteLoadingState());
-    DioHelper.getData(url: "user/" , token: SharedPreferencesHelper.getData(key: 'token')).then((value) {
+    DioHelper.getData(url: "users/" , token: SharedPreferencesHelper.getData(key: 'token')).then((value) {
       noteHub = NoteHub.fromJson(value.data);
       emit(NoteSuccessState());
     }).catchError((onError){

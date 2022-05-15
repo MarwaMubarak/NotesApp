@@ -50,8 +50,9 @@ class SignUpView extends StatelessWidget {
                         width: 350,
                         child: TextField(
                           controller: _firstNameController,
-                          textAlign: TextAlign.center,
                           decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            prefixIconColor: Colors.grey,
                             hintText: 'First Name',
                             border: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -76,8 +77,9 @@ class SignUpView extends StatelessWidget {
                         width: 350,
                         child: TextField(
                           controller: _lastNameController,
-                          textAlign: TextAlign.center,
                           decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            prefixIconColor: Colors.grey,
                             hintText: 'Last Name',
                             border: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -102,9 +104,12 @@ class SignUpView extends StatelessWidget {
                         width: 350,
                         child: TextField(
                           controller: _emailController,
-                          textAlign: TextAlign.center,
                           decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.email_outlined),
+                            prefixIconColor: Colors.grey,
                             hintText: 'Email',
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
 
                           ),
                         ),
@@ -126,12 +131,15 @@ class SignUpView extends StatelessWidget {
                         width: 350,
                         child: TextField(
                           controller: _passwordController,
-                          textAlign: TextAlign.center,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
                           decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.lock),
+                            prefixIconColor: Colors.grey,
                             hintText: 'Password',
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
 
                           ),
                         ),
@@ -155,20 +163,22 @@ class SignUpView extends StatelessWidget {
                         style: TextStyle(fontSize: 20, color: Colors.black),)
                   ),
                   SizedBox(
-                    height: 60,
+                    height: 20,
                   ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xfffae2fc),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignInView()),
-                        );
-                      },
-                      child: const Text('Sign In',
-                        style: TextStyle(fontSize: 15, color: Colors.black),)
+                  Text('Already Have an account?',style: TextStyle(color: Colors.white),),
+                  GestureDetector(
+                    child: Text('Sign In',style: TextStyle(color: Color(0xfffae2fc),fontSize: 15),),
+                    onTap: ()
+                    {
+                      _emailController.clear();
+                      _passwordController.clear();
+                      _lastNameController.clear();
+                      _firstNameController.clear();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignInView()),
+                      );
+                    },
                   ),
                 ],
               ),

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import '../../models/user_hub.dart';
 import '../../services/dio_helper/dio_helper.dart';
+import '../../services/sp_screen/cache_helper.dart';
 
 part 'user_state.dart';
 
@@ -16,12 +17,12 @@ class UserCubit extends Cubit<UserState> {
   login(String email , String password ){
     // ToDO :: Create login
     emit(UserLoadingState());
-    DioHelper.postData(url: "user/", data: {
-      'email' : email,
-      'password' : password
+    DioHelper.postData(url: "users/", data: {
+      'Email' : email,
+      'Password' : password
     }).then((value)  {
       userHub = UserHub.formJson(value.data);
-      //SharedPreferencesHelper.saveData(key: 'token', value: userHub.accessToken);
+      SharedPreferencesHelper.saveData(key: 'token', value: userHub.accessToken);
       emit(UserSuccessState(userHub));
     }).catchError((error){
       emit(UserErrorState());

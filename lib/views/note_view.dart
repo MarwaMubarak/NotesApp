@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/main.dart';
+import 'package:notes_app/models/note_hub.dart';
 import 'package:notes_app/views/home_view.dart';
 class NoteView extends StatelessWidget {
 
@@ -10,30 +12,34 @@ class NoteView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset:false,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+      ),
       body: Container(
         color: Colors.black,
         child: Column(
           children: [
-            SizedBox(
-              height: 80,
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Center(
                 child: Container(
                   height: 60,
                   decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade900,
                       borderRadius: BorderRadius.circular(20)
                   ),
                   width: 350,
                   child: TextField(
                     controller: _titleController,
-                    textAlign: TextAlign.center,
+                    cursorColor: Colors.white70,
+                    style: TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
+
                       border: InputBorder.none,
                       enabledBorder: InputBorder.none,
                       hintText: 'Title',
+                        hintStyle: TextStyle( color: Colors.white70,),
+                      prefixIcon: Icon(Icons.add,color:Colors.white70)
 
                     ),
                   ),
@@ -49,20 +55,22 @@ class NoteView extends StatelessWidget {
                 child: Container(
                   height: 200,
                   decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade900,
                       borderRadius: BorderRadius.circular(20)
                   ),
                   width: 350,
                   child: TextField(
-
+                    style: TextStyle(color: Colors.white),
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
                     controller: _bodyController,
-                    textAlign: TextAlign.center,
+                    cursorColor: Colors.white70,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       enabledBorder: InputBorder.none,
                       hintText: 'Add Note ',
+                        hintStyle: TextStyle( color: Colors.white70,),
+                        prefixIcon: Icon(Icons.message,color:Colors.white70)
                     ),
                   ),
                 ),
@@ -74,12 +82,17 @@ class NoteView extends StatelessWidget {
                 primary: Color(0xffe2cde3),
               ),
               onPressed: () {
+                NoteHub newNote=NoteHub(title: _titleController.text==''?'No Tiltle':_titleController.text, message:_bodyController.text==''?'No Content':_bodyController.text);
+                NotesList.add(newNote);
+                NotesList=NotesList.reversed.toList();
+                _bodyController.clear();
+                _titleController.clear();
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => HomeView()),
                 );
               },
-              child: Text('Add Note'),
+              child: Icon(Icons.add,color: Colors.black,),
             ),
           ],
         ),
