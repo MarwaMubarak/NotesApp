@@ -1,7 +1,7 @@
 class NoteHub{
   String? title;
   String? message;
-  String? date;
+  DateTime? date;
   String? id;
 
 

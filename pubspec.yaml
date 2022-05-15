@@ -69,10 +69,6 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - 'assets/images/logo.png'
-    - 'assets/images/logo1.png'
-    - 'assets/images/logo2.png'
-    - 'assets/images/logo3.png'
     - 'assets/images/log1.png'
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/blocs/note/note_cubit.dart';
 import 'package:notes_app/main.dart';
 import 'package:notes_app/models/note_hub.dart';
 import 'package:notes_app/views/home_view.dart';
@@ -15,7 +17,13 @@ class NoteView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
       ),
-      body: Container(
+      body: BlocConsumer<NoteCubit, NoteState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
+    var noteCubit=NoteCubit();
+    return Container(
         color: Colors.black,
         child: Column(
           children: [
@@ -82,7 +90,7 @@ class NoteView extends StatelessWidget {
                 primary: Color(0xffe2cde3),
               ),
               onPressed: () {
-                NoteHub newNote=NoteHub(title: _titleController.text==''?'No Tiltle':_titleController.text, message:_bodyController.text==''?'No Content':_bodyController.text);
+                NoteHub newNote=NoteHub(title: _titleController.text==''?'No Title':_titleController.text, message:_bodyController.text==''?'No Content':_bodyController.text,date: DateTime.now(),id: '0');
                 NotesList.add(newNote);
                 NotesList=NotesList.reversed.toList();
                 _bodyController.clear();
@@ -96,7 +104,9 @@ class NoteView extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      );
+  },
+),
     );
   }
 }

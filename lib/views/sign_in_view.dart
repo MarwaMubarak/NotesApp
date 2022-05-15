@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/blocs/user/user_cubit.dart';
-import 'package:notes_app/views/note_view.dart';
 import 'package:notes_app/views/sign_up_view.dart';
 import 'home_view.dart';
 
