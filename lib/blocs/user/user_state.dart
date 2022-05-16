@@ -12,7 +12,6 @@ class UserSuccessState extends UserState {
   final UserHub? userHub;
 
   UserSuccessState(this.userHub);
-
 }
 
 class UserErrorState extends UserState {}

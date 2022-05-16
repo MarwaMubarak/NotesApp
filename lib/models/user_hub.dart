@@ -8,13 +8,13 @@ class UserHub {
 
   UserHub(
       {this.id,
-        this.firstname,
-        this.lastname,
-        this.email,
-        this.password,
-        this.iV});
+      this.firstname,
+      this.lastname,
+      this.email,
+      this.password,
+      this.iV});
 
-   UserHub.fromJson(Map<String, dynamic> json) {
+  UserHub.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
     firstname = json['Firstname'];
     lastname = json['Lastname'];
@@ -33,6 +33,4 @@ class UserHub {
     data['__v'] = this.iV;
     return data;
   }
-
-
 }

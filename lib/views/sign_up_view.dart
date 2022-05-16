@@ -5,9 +5,7 @@ import 'package:notes_app/views/sign_in_view.dart';
 
 import 'home_view.dart';
 
-
 class SignUpView extends StatelessWidget {
-
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -20,7 +18,7 @@ class SignUpView extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
-        var userCubit=UserCubit();
+        var userCubit = UserCubit();
         return Scaffold(
           resizeToAvoidBottomInset: false,
           body: Center(
@@ -42,11 +40,9 @@ class SignUpView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Center(
                       child: Container(
-
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)
-                        ),
+                            borderRadius: BorderRadius.circular(20)),
                         width: 350,
                         child: TextField(
                           controller: _firstNameController,
@@ -56,7 +52,6 @@ class SignUpView extends StatelessWidget {
                             hintText: 'First Name',
                             border: InputBorder.none,
                             enabledBorder: InputBorder.none,
-
                           ),
                         ),
                       ),
@@ -69,11 +64,9 @@ class SignUpView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Center(
                       child: Container(
-
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)
-                        ),
+                            borderRadius: BorderRadius.circular(20)),
                         width: 350,
                         child: TextField(
                           controller: _lastNameController,
@@ -83,7 +76,6 @@ class SignUpView extends StatelessWidget {
                             hintText: 'Last Name',
                             border: InputBorder.none,
                             enabledBorder: InputBorder.none,
-
                           ),
                         ),
                       ),
@@ -96,11 +88,9 @@ class SignUpView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Center(
                       child: Container(
-
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)
-                        ),
+                            borderRadius: BorderRadius.circular(20)),
                         width: 350,
                         child: TextField(
                           controller: _emailController,
@@ -110,7 +100,6 @@ class SignUpView extends StatelessWidget {
                             hintText: 'Email',
                             border: InputBorder.none,
                             enabledBorder: InputBorder.none,
-
                           ),
                         ),
                       ),
@@ -123,11 +112,9 @@ class SignUpView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Center(
                       child: Container(
-
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)
-                        ),
+                            borderRadius: BorderRadius.circular(20)),
                         width: 350,
                         child: TextField(
                           controller: _passwordController,
@@ -140,7 +127,6 @@ class SignUpView extends StatelessWidget {
                             hintText: 'Password',
                             border: InputBorder.none,
                             enabledBorder: InputBorder.none,
-
                           ),
                         ),
                       ),
@@ -159,17 +145,23 @@ class SignUpView extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => HomeView()),
                         );
                       },
-                      child: const Text('Sign Up',
-                        style: TextStyle(fontSize: 20, color: Colors.black),)
-                  ),
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      )),
                   SizedBox(
                     height: 20,
                   ),
-                  Text('Already Have an account?',style: TextStyle(color: Colors.white),),
+                  Text(
+                    'Already Have an account?',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   GestureDetector(
-                    child: Text('Sign In',style: TextStyle(color: Color(0xfffae2fc),fontSize: 15),),
-                    onTap: ()
-                    {
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(color: Color(0xfffae2fc), fontSize: 15),
+                    ),
+                    onTap: () {
                       _emailController.clear();
                       _passwordController.clear();
                       _lastNameController.clear();
@@ -189,6 +181,3 @@ class SignUpView extends StatelessWidget {
     );
   }
 }
-
-
-

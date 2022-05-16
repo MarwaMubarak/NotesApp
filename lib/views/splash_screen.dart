@@ -9,16 +9,12 @@ import '../cores/size_config.dart';
 import '../services/sp_screen/cache_helper.dart';
 import 'home_view.dart';
 
-
-
-
 class SplachScreen extends StatefulWidget {
   @override
   _SplachScreenState createState() => _SplachScreenState();
 }
 
 class _SplachScreenState extends State<SplachScreen> {
-
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -29,15 +25,10 @@ class _SplachScreenState extends State<SplachScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-
       body: Container(
         color: Colors.black,
-        child: Center(
-          child:Image.asset('assets/images/log1.png')
-          ),
+        child: Center(child: Image.asset('assets/images/log1.png')),
       ),
-
-
     );
   }
 
@@ -49,13 +40,13 @@ class _SplachScreenState extends State<SplachScreen> {
   route() {
     var token = SharedPreferencesHelper.getData(key: 'token');
     if (token == null)
-      AppNavigator.customNavigator(context: context, screen: SignInView(), finish: true);
+      AppNavigator.customNavigator(
+          context: context, screen: SignInView(), finish: true);
     else
-      AppNavigator.customNavigator(context: context, screen: HomeView(), finish: true);
+      AppNavigator.customNavigator(
+          context: context, screen: HomeView(), finish: true);
     //TODO :: Get token and   Check it
   }
-
-
 }
 
 // import 'package:flutter/material.dart';
