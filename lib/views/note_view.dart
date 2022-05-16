@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/blocs/note/note_cubit.dart';
 import 'package:notes_app/main.dart';
 import 'package:notes_app/models/note_hub.dart';
+import 'package:notes_app/services/sp_screen/cache_helper.dart';
 import 'package:notes_app/views/home_view.dart';
 
 import '../blocs/user/user_cubit.dart';
@@ -14,6 +15,12 @@ class NoteView extends StatelessWidget {
   NoteView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<NoteCubit, NoteState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
+    var noteCubit=NoteCubit.get(context);
     return Scaffold(
       resizeToAvoidBottomInset:false,
       appBar: AppBar(
@@ -87,9 +94,9 @@ class NoteView extends StatelessWidget {
               ),
               onPressed: () {
                 String date='${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year} - ${DateTime.now().hour}:${DateTime.now().minute}';
-                NoteHub newNote=NoteHub(noteBody: _bodyController.text,noteDate: date,noteTitle: _titleController.text);
-                NotesList.add(newNote);
-                NotesList=NotesList.reversed.toList();
+                Note newNote=Note(noteTitle: _titleController.text,noteBody: _bodyController.text,noteDate: date, id: SharedPreferencesHelper.getData(key: 'token'));
+                noteCubit.noteHub!.notes.add(newNote);
+                noteCubit.noteHub!.notes.reversed.toList();
                 _bodyController.clear();
                 _titleController.clear();
                 Navigator.push(
@@ -104,5 +111,7 @@ class NoteView extends StatelessWidget {
       )
 
     );
+  },
+);
   }
 }

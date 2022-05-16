@@ -1,13 +1,10 @@
 class NoteHub {
  List<Note> notes=[];
  NoteHub({required this.notes});
- NoteHub.fromJson(json) {
-   if (json['note'] != null) {
-     notes = <Note>[];
-     json['note'].forEach((v) {
-       notes.add(new Note.fromJson(v));
-     });
-   }
+ NoteHub.fromJson(List<dynamic> list) {
+  list.forEach((element) {
+    notes.add(Note.fromJson(element));
+  });
  }
 
  Map<String, dynamic> toJson() {
@@ -23,13 +20,15 @@ class Note
   String? noteTitle;
   String? noteBody;
   String? noteDate;
+  int? iV;
 
-  Note(this.id, this.noteTitle, this.noteBody, this.noteDate);
+  Note({required this.id, required this.noteTitle, required this.noteBody,required this.noteDate});
   Note.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
     noteTitle = json['NoteTitle'];
     noteBody = json['NoteBody'];
     noteDate = json['NoteDate'];
+    iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {

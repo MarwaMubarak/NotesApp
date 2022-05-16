@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/models/note_hub.dart';
 class NoteCard extends StatelessWidget {
 
-NoteHub note;
+Note note;
 DateTime date;
    NoteCard({required this.note,required this.date});
 

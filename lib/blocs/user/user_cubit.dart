@@ -21,11 +21,12 @@ class UserCubit extends Cubit<UserState> {
   login(String email , String password ){
     // ToDO :: Create login
     emit(UserLoadingState());
-    DioHelper.postData(url: "user/", data: {
+    DioHelper.postData(url: "login", data: {
       'email' : email,
       'password' : password
     }).then((value)  {
-      userHub = UserHub.fromJson(value.data);
+      //userHub = UserHub.fromJson(value.data);
+      print(value.data);
       //SharedPreferencesHelper.saveData(key: 'token', value: userHub.accessToken);
       emit(UserSuccessState(userHub));
     }).catchError((error){
