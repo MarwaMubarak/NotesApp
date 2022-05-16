@@ -24,12 +24,12 @@ DateTime date;
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(note.title!,style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,),overflow: TextOverflow.ellipsis,textAlign:TextAlign.left,maxLines: 1,),
-              Text(note.message!,style:TextStyle(color: Colors.white,fontSize: 10,),overflow: TextOverflow.ellipsis,textAlign:TextAlign.left,maxLines: 1,),
+              Text(note.noteTitle!.length==0?'No Title':note.noteTitle!,style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,),overflow: TextOverflow.ellipsis,textAlign:TextAlign.left,maxLines: 1,),
+              Text(note.noteBody!.length==0?'No content':note.noteBody!,style:TextStyle(color: Colors.white,fontSize: 10,),overflow: TextOverflow.ellipsis,textAlign:TextAlign.left,maxLines: 1,),
               SizedBox(
                 height: 5,
               ),
-              Text('created ${date.day}/${date.month}/${date.year} - ${date.hour}:${date.minute}',style:TextStyle(color: Colors.white,fontSize: 9,),overflow: TextOverflow.ellipsis,textAlign:TextAlign.left,maxLines: 1,)
+              Text('created ${date}',style:TextStyle(color: Colors.white,fontSize: 9,),overflow: TextOverflow.ellipsis,textAlign:TextAlign.left,maxLines: 1,)
 
             ],
           ),

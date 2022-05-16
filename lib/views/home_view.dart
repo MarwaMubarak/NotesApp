@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/blocs/note/note_cubit.dart';
 import 'package:notes_app/components/note_card.dart';
 import 'package:notes_app/main.dart';
 
 import 'note_view.dart';
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<NoteCubit, NoteState>(
+  listener: (context, state) {
+    // TODO: implement listener
+
+  },
+  builder: (context, state) {
+    var notesCubit=NoteCubit();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -41,5 +50,7 @@ class HomeView extends StatelessWidget {
         ),
       ),
     );
+  },
+);
   }
 }

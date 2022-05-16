@@ -53,10 +53,7 @@ class SignInView extends StatelessWidget {
                             width: 350,
                             child: TextField(
                               controller: _emailController,
-
-
                               onChanged: (val) {
-                                  userCubit.Validation(_emailController.toString());
                               },
                               decoration: const InputDecoration(
                                 prefixIcon: Icon(Icons.email_outlined),
@@ -109,8 +106,13 @@ class SignInView extends StatelessWidget {
                         primary: Color(0xfffae2fc),
                       ),
                       onPressed: () {
+                        String email=_emailController.text;
+                        String pass=_passController.text;
+                        userCubit.login(email, pass);
+
                         Navigator.push(
                           context,
+                          //userCubit.userHub
                           MaterialPageRoute(builder: (context) => HomeView()),
                         );
                       },

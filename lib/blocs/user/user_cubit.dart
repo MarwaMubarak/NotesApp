@@ -21,25 +21,14 @@ class UserCubit extends Cubit<UserState> {
       'Email' : email,
       'Password' : password
     }).then((value)  {
-      userHub = UserHub.formJson(value.data);
-      SharedPreferencesHelper.saveData(key: 'token', value: userHub.accessToken);
+      userHub = UserHub.fromJson(value.data);
+      SharedPreferencesHelper.saveData(key: 'token', value: userHub.sId);
       emit(UserSuccessState(userHub));
     }).catchError((error){
       emit(UserErrorState());
     });
   }
 
-Validation(email)
-{
-  if (EmailValidator.validate(email)) {
-    emit(ValidationState());
-    return true;
-  } else {
-    emit(ValidationState());
-    return false;
-  }
-
 }
 
 
-}
