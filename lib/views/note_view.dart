@@ -19,13 +19,7 @@ class NoteView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
       ),
-      body: BlocConsumer<UserCubit, UserState>(
-  listener: (context, state) {
-    // TODO: implement listener
-  },
-  builder: (context, state) {
-    var userCubit=UserCubit();
-    return Container(
+      body: Container(
         color: Colors.black,
         child: Column(
           children: [
@@ -107,9 +101,8 @@ class NoteView extends StatelessWidget {
             ),
           ],
         ),
-      );
-  },
-),
+      )
+
     );
   }
 }
