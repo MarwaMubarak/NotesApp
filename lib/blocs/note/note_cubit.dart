@@ -15,19 +15,20 @@ class NoteCubit extends Cubit<NoteState> {
   NoteCubit() : super(NoteInitial());
 
   static NoteCubit get(context)=>BlocProvider.of(context);
-  //late NoteHub noteHub;
-  List<NoteHub> notesList = [];
-  late List<NoteHub> noteHub;
+
+  List<Note> notesList = [];
+  late NoteHub noteHub;
 
   getAllNotes() {
+    emit(NoteLoadingState());
     DioHelper.getData(url: 'notes',token: SharedPreferencesHelper.getData(key: 'token')).then((value) {
-      emit(NoteLoadingState());
 
       var jsonData = jsonDecode(value.data);
 
-      noteHub = NoteHub.fromJson(jsonData) as List<NoteHub>;
+     // noteHub = NoteHub.fromJson(jsonData) as List<NoteHub>;
+      noteHub=NoteHub.fromJson(jsonData);
 
-      for (var note in noteHub )///
+      for (var note in noteHub.notes )
         notesList.add(note);
 
       emit(NoteSuccessState());
@@ -39,22 +40,4 @@ class NoteCubit extends Cubit<NoteState> {
       emit(NoteErrorState());
     });
   }
-  
-  
-  
-  
-  
-  
-  
-  void getNotes(){
-    // Todo :: Create get data
-    emit(NoteLoadingState());
-    DioHelper.getData(url: "users/" , token: SharedPreferencesHelper.getData(key: 'token')).then((value) {
-      noteHub = NoteHub.fromJson(value.data) as List<NoteHub>;
-      emit(NoteSuccessState());
-    }).catchError((onError){
-      emit(NoteErrorState());
-    });
-  }
-
 }

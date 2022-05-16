@@ -16,5 +16,3 @@ class UserSuccessState extends UserState {
 }
 
 class UserErrorState extends UserState {}
-
-class ValidationState extends UserState{}

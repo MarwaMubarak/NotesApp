@@ -1,5 +1,5 @@
 class UserHub {
-  String? sId;
+  String? id;
   String? firstname;
   String? lastname;
   String? email;
@@ -7,7 +7,7 @@ class UserHub {
   int? iV;
 
   UserHub(
-      {this.sId,
+      {this.id,
         this.firstname,
         this.lastname,
         this.email,
@@ -15,7 +15,7 @@ class UserHub {
         this.iV});
 
    UserHub.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
+    id = json['_id'];
     firstname = json['Firstname'];
     lastname = json['Lastname'];
     email = json['Email'];
@@ -25,7 +25,7 @@ class UserHub {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
+    data['_id'] = this.id;
     data['Firstname'] = this.firstname;
     data['Lastname'] = this.lastname;
     data['Email'] = this.email;

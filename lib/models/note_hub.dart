@@ -1,46 +1,43 @@
 class NoteHub {
-  String? sId;
+ List<Note> notes=[];
+ NoteHub({required this.notes});
+ NoteHub.fromJson(json) {
+   if (json['note'] != null) {
+     notes = <Note>[];
+     json['note'].forEach((v) {
+       notes.add(new Note.fromJson(v));
+     });
+   }
+ }
+
+ Map<String, dynamic> toJson() {
+   final Map<String, dynamic> data = new Map<String, dynamic>();
+   data['note'] = this.notes.map((v) => v.toJson()).toList();
+   return data;
+ }
+
+}
+class Note
+{
+  String? id;
   String? noteTitle;
   String? noteBody;
   String? noteDate;
-  int? iV;
 
-  NoteHub({this.sId, this.noteTitle, this.noteBody, this.noteDate, this.iV});
-
-  NoteHub.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
+  Note(this.id, this.noteTitle, this.noteBody, this.noteDate);
+  Note.fromJson(Map<String, dynamic> json) {
+    id = json['_id'];
     noteTitle = json['NoteTitle'];
     noteBody = json['NoteBody'];
     noteDate = json['NoteDate'];
-    iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
+    data['_id'] = this.id;
     data['NoteTitle'] = this.noteTitle;
     data['NoteBody'] = this.noteBody;
     data['NoteDate'] = this.noteDate;
-    data['__v'] = this.iV;
     return data;
   }
 }
-
-
-// class NoteHub{
-//   String? title;
-//   String? message;
-//   DateTime? date;
-//   String? id;
-//
-//
-//   NoteHub({required this.title,required this.message,required this.date,required this.id});
-//
-//   NoteHub.fromJson(Map< String,dynamic >jsonData){
-//     title = jsonData["NoteTitle"];
-//     message = jsonData["NoteBody"];
-//     id=jsonData["_id"];
-//     date=jsonData["NoteDate"];
-//   }
-//
-// }
